@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: 220 23% 98%;
+  --surface: 0 0% 100%;
+  --surface-raised: 0 0% 100%;
+  --border: 220 14% 91%;
+  --border-strong: 220 13% 82%;
+  --ink: 224 39% 10%;
+  --ink-muted: 220 9% 44%;
+  --ink-faint: 220 9% 64%;
+  --accent: 243 62% 61%;
+  --accent-hover: 243 58% 54%;
+  --accent-muted: 243 70% 96%;
+  --success: 152 55% 36%;
+  --warning: 38 92% 46%;
+  --danger: 358 68% 51%;
+}
+
+.dark {
+  --canvas: 230 14% 8%;
+  --surface: 228 13% 11%;
+  --surface-raised: 228 12% 14%;
+  --border: 228 10% 19%;
+  --border-strong: 228 9% 27%;
+  --ink: 220 25% 95%;
+  --ink-muted: 220 9% 66%;
+  --ink-faint: 220 8% 44%;
+  --accent: 243 82% 73%;
+  --accent-hover: 243 85% 78%;
+  --accent-muted: 243 35% 22%;
+  --success: 152 48% 48%;
+  --warning: 38 88% 58%;
+  --danger: 358 75% 63%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: hsl(var(--canvas));
+  color: hsl(var(--ink));
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: hsl(var(--accent) / 0.25);
+}
+
+/* Thin, unobtrusive scrollbars that match the surface they sit on */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border-strong)) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-strong));
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--border) / 0.4) 25%,
+    hsl(var(--border) / 0.7) 37%,
+    hsl(var(--border) / 0.4) 63%
+  );
+  background-size: 200% 100%;
+}
+
+/* dnd-kit drag overlay should never clip under sibling stacking contexts */
+[data-dnd-overlay] {
+  z-index: 999;
+}
+
+.tf-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(var(--accent) / 0.35);
+}

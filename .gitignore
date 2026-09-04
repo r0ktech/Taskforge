@@ -1,0 +1,16 @@
+node_modules/
+.next/
+dist/
+build/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+.DS_Store
+npm-debug.log*
+coverage/
+.turbo/
+packages/database/generated/
+apps/web/.next/
+uploads/
+DATABASE_URL="postgresql://taskforge:taskforge@localhost:5432/taskforge?schema=public"
