@@ -2,7 +2,7 @@
   "name": "task-forge",
   "private": true,
   "version": "0.1.0",
-  "description": "Task Forge — organizations, workspaces, teams, projects, kanban boards, real-time collaboration.",
+  "description": "Task Forge \u2014 organizations, workspaces, teams, projects, kanban boards, real-time collaboration.",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -11,14 +11,23 @@
     "dev": "npm run dev --workspace=apps/web",
     "dev:realtime": "npm run dev --workspace=apps/realtime",
     "dev:worker": "npm run dev --workspace=apps/worker",
-    "build": "npm run build --workspace=packages/database && npm run build --workspace=apps/web",
+    "build": "npm run build:packages && npm run build --workspace=apps/web",
     "db:generate": "npm run generate --workspace=packages/database",
     "db:push": "npm run push --workspace=packages/database",
     "db:migrate": "npm run migrate --workspace=packages/database",
     "db:seed": "npm run seed --workspace=packages/database",
     "db:studio": "npm run studio --workspace=packages/database",
     "lint": "npm run lint --workspace=apps/web",
-    "typecheck": "tsc -b --pretty || true"
+    "typecheck": "tsc -b --pretty || true",
+    "build:packages": "npm run build --workspace=packages/shared && npm run build --workspace=packages/database",
+    "build:web": "npm run build:packages && npm run build --workspace=apps/web",
+    "build:realtime": "npm run build:packages && npm run build --workspace=apps/realtime",
+    "build:worker": "npm run build:packages && npm run build --workspace=apps/worker",
+    "build:all": "npm run build:packages && npm run build --workspace=apps/web && npm run build --workspace=apps/realtime && npm run build --workspace=apps/worker",
+    "start": "npm run start --workspace=apps/web",
+    "start:realtime": "npm run start --workspace=apps/realtime",
+    "start:worker": "npm run start --workspace=apps/worker",
+    "db:deploy": "npm run migrate:deploy --workspace=packages/database"
   },
   "devDependencies": {
     "typescript": "^5.6.3"

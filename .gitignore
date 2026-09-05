@@ -13,4 +13,6 @@ coverage/
 packages/database/generated/
 apps/web/.next/
 uploads/
-DATABASE_URL="postgresql://taskforge:taskforge@localhost:5432/taskforge?schema=public"
+
+# env templates are committed; real env files are not
+!.env.example
